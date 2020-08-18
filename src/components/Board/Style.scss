@@ -1,0 +1,26 @@
+.board .board-row {
+    width: 100%;
+    display: flex;  
+
+    .circle {
+      height: 25px;
+      width: 25px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      margin: 0 5px;
+    }
+  
+  .red {
+  background-color: red;
+  }
+  .green {
+      background-color: green;
+  }
+  .yellow {
+      background-color: yellow;
+  }
+  .blue {
+      background-color: blue;
+  }
+  }
