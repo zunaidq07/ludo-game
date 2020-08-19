@@ -15,6 +15,11 @@ const ludoReducer = (state, action) => {
                 ...state,
                 counter: state.counter+1
             }
+        case 'NEXT_TURN':
+            return {
+                ...state,
+                nextPlayer: state.counter % state.playerCount
+            }
         default:
             return state
     }
