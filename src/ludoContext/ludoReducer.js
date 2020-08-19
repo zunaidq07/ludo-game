@@ -20,6 +20,20 @@ const ludoReducer = (state, action) => {
                 ...state,
                 nextPlayer: state.counter % state.playerCount
             }
+        case 'START_GAME':
+            return {
+                ...state,
+                gameStatus: !state.gameStatus
+            }
+        case 'RESET_GAME':
+            return {
+                ...state,
+                playerCount: 0,
+                diceValue: 0,
+                counter: 0,
+                nextPlayer: 0,
+                gameStatus: false
+            }
         default:
             return state
     }

@@ -1,12 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import LudoContext from '../../ludoContext/ludoContext'
 import './Style.scss'
 
 const Header = () => {
+    const { resetGame, startGame } = useContext(LudoContext)
+    const handleReset = () => {
+        resetGame()
+    }
+    const handleStart = () => {
+        startGame()
+    }
     return (
         <div className="header">
-            <button>Reset</button>
+            <button onClick={handleReset}>Reset</button>
             <h1>Snake Ladder</h1>
-            <button>Start</button>
+            <button onClick={handleStart}>Start</button>
         </div>
     )
 }

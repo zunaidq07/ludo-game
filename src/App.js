@@ -11,7 +11,7 @@ function App() {
         <div className="container">
           <GameBoard />
         </div>
-        <h3 result-msg>Hurary! You win</h3>
+        {/* <h3 result-msg>Hurary! You win</h3> */}
       </LudoContextProvider>
     </div>
   );

@@ -4,7 +4,7 @@ import './Style.scss'
 
 const Dice = ({ handleEachTurn }) => {
     const randomNumber = () => {
-        return Math.ceil(Math.random()*6)
+        return Math.ceil(Math.random()*3)
     }
     const { setDiceValue, diceValue, setCounter } = useContext(LudoContext)
     const handleClick = () => {

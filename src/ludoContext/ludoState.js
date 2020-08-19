@@ -7,13 +7,22 @@ const LudoContextProvider = (props) => {
         playerCount: 0,
         diceValue: 0,
         counter: 0,
-        nextPlayer: 0
+        nextPlayer: 0,
+        gameStatus: false
     }
 
     const [state, dispatch] = useReducer(ludoReducer, initialState)
 
     const setPlayerCount = (count) => {
         dispatch({type: 'PLAYER_COUNT', payload: count})
+    }
+
+    const resetGame = () => {
+        dispatch({type: 'RESET_GAME'})
+    }
+
+    const startGame = () => {
+        dispatch({type: 'START_GAME'})
     }
 
     const setDiceValue = (value) => {
@@ -37,7 +46,10 @@ const LudoContextProvider = (props) => {
                 counter: state.counter,
                 setCounter,
                 nextTurn,
-                nextPlayer: state.nextPlayer
+                nextPlayer: state.nextPlayer,
+                gameStatus: state.gameStatus,
+                resetGame,
+                startGame
             }}
         >
             {props.children}
