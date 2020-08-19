@@ -1,5 +1,4 @@
 import React from 'react'
-import { ArcherContainer, ArcherElement } from 'react-archer';
 import Square from '../Square'
 import './Style.scss'
 

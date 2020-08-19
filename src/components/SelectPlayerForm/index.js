@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import QuizContext from '../../ludoContext/ludoContext'
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -18,9 +19,10 @@ const useStyles = makeStyles((theme) => ({
 const SelectPlayerForm = () => {
   const classes = useStyles();
   const [player, setPlayer] = React.useState('');
-
+  const { setPlayerCount } = useContext(QuizContext)
   const handleChange = (event) => {
     setPlayer(event.target.value);
+    setPlayerCount(event.target.value)
   };
 
   return (

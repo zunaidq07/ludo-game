@@ -1,21 +1,22 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import Board from '../Board'
 import Timer from '../Timer'
 import Dice from '../Dice';
 import PlayersTurn from '../PlayersTurn';
 import Header from '../Header';
 import SelectPlayerForm from '../SelectPlayerForm'
+import LudoContext from '../../ludoContext/ludoContext'
 import './Style.scss'
 
 const GameBoard = () => {
     const [position, setPosition] = useState(0)
-    const handleDiceValue = (val) => {
-        setPosition(position+val)
-    }
+
+    const { diceValue } = useContext(LudoContext)
 
     useEffect(() => {
-        setTimeout(() => document.querySelector(`.square-${position}`).appendChild(document.createElement('div')).className="yellow circle", 500)
-    }, [position])
+        setPosition(diceValue+position)
+        document.querySelector(`.square-${position}`).appendChild(document.createElement('div')).className="yellow circle"
+    }, [position, diceValue])
 
     return (
         <div>
@@ -30,7 +31,7 @@ const GameBoard = () => {
             </div>
             <div className="footer">
                 <PlayersTurn />
-                <Dice diceValue={handleDiceValue}/>
+                <Dice />
             </div>
         </div>
     )
