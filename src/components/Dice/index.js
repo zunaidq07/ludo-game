@@ -2,16 +2,16 @@ import React, { useState, useEffect, useContext } from 'react'
 import LudoContext from '../../ludoContext/ludoContext'
 import './Style.scss'
 
-const Dice = () => {
+const Dice = ({ handleEachTurn }) => {
     const randomNumber = () => {
         return Math.ceil(Math.random()*6)
     }
-    // const [value, setValue] = useState(randomNumber())
-    const { setDiceValue, diceValue } = useContext(LudoContext)
-    // console.log('initialVal', value)
+    const { setDiceValue, diceValue, setCounter } = useContext(LudoContext)
     const handleClick = () => {
-        // setValue(randomNumber())
-        setDiceValue(randomNumber())
+        setCounter()
+        const nextValue = randomNumber()
+        setDiceValue(nextValue)
+        handleEachTurn(nextValue)
     }
     return (
         <div>

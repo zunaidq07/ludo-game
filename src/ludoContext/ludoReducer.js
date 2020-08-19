@@ -10,6 +10,11 @@ const ludoReducer = (state, action) => {
                 ...state,
                 diceValue: action.payload
             }
+        case 'SET_COUNTER':
+            return {
+                ...state,
+                counter: state.counter+1
+            }
         default:
             return state
     }

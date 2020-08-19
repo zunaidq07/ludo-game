@@ -10,13 +10,29 @@ import './Style.scss'
 
 const GameBoard = () => {
     const [position, setPosition] = useState(0)
-
+    const [prevPosition, setPrevPosition] = useState(0)
     const { diceValue } = useContext(LudoContext)
-
     useEffect(() => {
-        setPosition(diceValue+position)
-        document.querySelector(`.square-${position}`).appendChild(document.createElement('div')).className="yellow circle"
-    }, [position, diceValue])
+        console.log('position and prevposition', position, prevPosition)
+        if(position !== 0 && prevPosition <= 15) {
+            const el = document.querySelector(`.yellow`)
+            if(el) {
+                document.querySelector(`.square-${prevPosition}`).removeChild(el)
+            }   
+        }
+        if(document.querySelector(`.square-${position}`)) {
+            document.querySelector(`.square-${position}`).appendChild(document.createElement('div')).className="yellow circle"
+        }
+    }, [position])
+
+    const handleEachTurn = (nextValue) => {
+        if(nextValue+position <= 15) {
+            setPosition(nextValue+position)
+        }
+        if(diceValue + prevPosition<=15) {
+            setPrevPosition(diceValue + prevPosition)
+        }
+    }
 
     return (
         <div>
@@ -31,7 +47,7 @@ const GameBoard = () => {
             </div>
             <div className="footer">
                 <PlayersTurn />
-                <Dice />
+                <Dice handleEachTurn={handleEachTurn}/>
             </div>
         </div>
     )
